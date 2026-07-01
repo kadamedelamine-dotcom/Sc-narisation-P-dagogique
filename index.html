@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سيناريو تعليمي - مقياس تاريخ الفكر السياسي</title>
     <style>
+        /* الحفاظ على الهوية البصرية والألوان الأصلية */
         :root {
             --primary-color: #1a5d1a; /* أخضر جامعي رزين */
             --secondary-color: #d4af37; /* ذهبي خفيف */
@@ -20,7 +20,7 @@
             color: var(--text-color);
             line-height: 1.6;
             margin: 0;
-            padding: 40px;
+            padding: 20px;
         }
 
         .container {
@@ -29,6 +29,7 @@
             border: 1px solid var(--border-color);
             padding: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-sizing: border-box;
         }
 
         .header {
@@ -38,16 +39,20 @@
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 20px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .university-info {
             text-align: right;
             font-weight: bold;
+            min-width: 200px;
         }
 
         .logo {
             width: 120px;
             height: auto;
+            max-width: 100%;
         }
 
         .document-title {
@@ -61,7 +66,7 @@
 
         .info-section {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
@@ -71,6 +76,8 @@
             padding: 15px;
             border-radius: 8px;
             background-color: #fcfcfc;
+            box-sizing: border-box;
+            overflow-wrap: break-word;
         }
 
         h3 {
@@ -80,11 +87,13 @@
             margin-top: 0;
         }
 
+        /* تنسيق الجداول الأساسي العام */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            font-size: 0.9em;
+            font-size: 0.95em;
+            display: table;
         }
 
         th {
@@ -92,12 +101,14 @@
             color: white;
             padding: 12px;
             border: 1px solid #ddd;
+            text-align: center;
         }
 
         td {
             padding: 12px;
             border: 1px solid #ddd;
             vertical-align: top;
+            text-align: right;
         }
 
         tr:nth-child(even) {
@@ -107,11 +118,54 @@
         .duration {
             font-weight: bold;
             color: #c0392b;
+            text-align: center;
+        }
+
+        /* حاوية مرنة للجداول تمنع تمدد الصفحة وتتحكم بالتمرير الأفقي */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
         }
 
         @media print {
             body { padding: 0; }
             .container { border: none; box-shadow: none; }
+        }
+
+        /* ========================================== */
+        /* التجاوب الذكي الشامل للهواتف والشاشات الصغيرة */
+        /* ========================================== */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { padding: 15px; }
+            
+            /* ضبط الترويسة عمودياً في المنتصف */
+            .header { 
+                flex-direction: column !important;
+                justify-content: center !important; 
+                align-items: center !important; 
+                text-align: center !important; 
+                gap: 20px;
+            }
+            .university-info { 
+                text-align: center !important; 
+                min-width: 100% !important; 
+            }
+
+            /* الحل الجذري لمنع الانضغاط الظاهر في الصورة image_fc74b8.png */
+            /* هذا السطر يجبر جميع جداول الملف على التمدد بعرض مريح وقابل للتمرير بأناقة */
+            .table-responsive table {
+                min-width: 900px !important; 
+            }
+            
+            th, td {
+                padding: 10px 8px !important; /* تحسين الهوامش الداخلية في وضع الهاتف */
+                font-size: 14px !important;
+            }
         }
     </style>
 </head>
@@ -124,7 +178,6 @@
             جامعة أبو بكر بلقايد - تلمسان<br>
             كلية الحقوق والعلوم السياسية<br>
             قسم العلوم السياسية<br>
-        
         </div>
         <img src="university-logo.png" alt="شعار جامعة تلمسان" class="logo">
         <div class="university-info" style="text-align: left;">
@@ -133,9 +186,6 @@
         </div>
     </div>
 
-    <!-- ======================================================== -->
-<!-- واجهة "الأناقة الهادئة" - تصميم بسيط، راقي وجذاب بديل لـ image_a975c5.png -->
-<!-- ======================================================== -->
 <style>
     .elegant-top-section {
         width: 100%;
@@ -143,11 +193,12 @@
         font-family: "Segoe UI", Arial, sans-serif;
         direction: rtl;
         color: #2d3748;
+        box-sizing: border-box;
     }
 
-    /* العنوان الرئيسي: بسيط ومهيب */
+    /* العنوان الرئيسي */
     .elegant-main-title {
-        background-color: #064e3b; /* الأخضر الداكن الأصلي */
+        background-color: #064e3b;
         color: #ffffff;
         text-align: center;
         padding: 20px;
@@ -174,9 +225,9 @@
         padding: 22px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
         position: relative;
+        box-sizing: border-box;
     }
 
-    /* اللمسة الذهبية الراقية في زاوية كل كرت */
     .elegant-card::before {
         content: "";
         position: absolute;
@@ -184,7 +235,7 @@
         right: 0;
         width: 4px;
         height: 30px;
-        background-color: #d97706; /* اللون الذهبي */
+        background-color: #d97706;
         border-radius: 0 8px 0 0;
     }
 
@@ -198,19 +249,24 @@
         border-bottom: 1px dashed #e2e8f0;
     }
 
-    /* تنسيق بطاقة الأستاذ الفاخرة */
+    /* تنسيق بطاقة الأستاذ */
     .elegant-prof-box {
         display: flex;
         align-items: center;
         gap: 16px;
+        flex-wrap: wrap;
     }
 
     .elegant-prof-img {
         width: 80px;
         height: 80px;
-        border-radius: 50%; /* شكل دائري كلاسيكي راقٍ */
+        border-radius: 50%;
         border: 2px solid #e2e8f0;
         object-fit: cover;
+    }
+
+    .elegant-prof-info {
+        min-width: 150px;
     }
 
     .elegant-prof-info h4 {
@@ -230,7 +286,6 @@
         color: #064e3b;
     }
 
-    /* النصوص القائمة داخل الكروت */
     .elegant-text-line {
         font-size: 13.5px;
         margin: 0 0 10px 0;
@@ -242,7 +297,6 @@
         margin-bottom: 0;
     }
 
-    /* كرت الفهرس الممتد البسيط */
     .elegant-full-card {
         background-color: #ffffff;
         border: 1px solid #e2e8f0;
@@ -250,6 +304,7 @@
         padding: 25px;
         margin-bottom: 30px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        box-sizing: border-box;
     }
 
     .elegant-index-grid {
@@ -273,11 +328,12 @@
 
     /* كرت الأهداف البيداغوجية */
     .elegant-goals-card {
-        background-color: #f8fafc; /* خلفية هادئة جداً تميل للرمادي الفاتح */
+        background-color: #f8fafc;
         border: 1px solid #e2e8f0;
-        border-right: 4px solid #064e3b; /* تمييز الهدف بلون المقياس */
+        border-right: 4px solid #064e3b;
         border-radius: 4px 8px 8px 4px;
         padding: 25px;
+        box-sizing: border-box;
     }
 
     .elegant-goals-title {
@@ -304,197 +360,13 @@
         margin-bottom: 0;
     }
 
-    /* التجاوب مع الشاشات المتنوعة */
     @media (max-width: 992px) {
         .elegant-grid-top { grid-template-columns: 1fr; }
         .elegant-index-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
         .elegant-index-grid { grid-template-columns: 1fr; }
-    }
-</style>
-
-<div class="elegant-top-section">
-
-    <!-- العنوان الرئيسي للملف -->
-<!-- ======================================================== -->
-<!-- واجهة "الأناقة الهادئة" - تصميم بسيط، راقي وجذاب بديل لـ image_a975c5.png -->
-<!-- ======================================================== -->
-<style>
-    .elegant-top-section {
-        width: 100%;
-        margin: 0 auto 40px auto;
-        font-family: "Segoe UI", Arial, sans-serif;
-        direction: rtl;
-        color: #2d3748;
-    }
-
-    /* العنوان الرئيسي: بسيط ومهيب */
-    .elegant-main-title {
-        background-color: #064e3b; /* الأخضر الداكن الأصلي */
-        color: #ffffff;
-        text-align: center;
-        padding: 20px;
-        border-radius: 6px;
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 30px;
-        letter-spacing: 0.5px;
-    }
-
-    /* شبكة التوزيع العلوية */
-    .elegant-grid-top {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr 1fr;
-        gap: 25px;
-        margin-bottom: 30px;
-    }
-
-    /* كروت المعلومات الموحدة */
-    .elegant-card {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 22px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-        position: relative;
-    }
-
-    /* اللمسة الذهبية الراقية في زاوية كل كرت */
-    .elegant-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 4px;
-        height: 30px;
-        background-color: #d97706; /* اللون الذهبي */
-        border-radius: 0 8px 0 0;
-    }
-
-    .elegant-card-title {
-        color: #064e3b;
-        font-size: 15.5px;
-        font-weight: 700;
-        margin-top: 0;
-        margin-bottom: 15px;
-        padding-bottom: 6px;
-        border-bottom: 1px dashed #e2e8f0;
-    }
-
-    /* تنسيق بطاقة الأستاذ الفاخرة */
-    .elegant-prof-box {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-    }
-
-    .elegant-prof-img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%; /* شكل دائري كلاسيكي راقٍ */
-        border: 2px solid #e2e8f0;
-        object-fit: cover;
-    }
-
-    .elegant-prof-info h4 {
-        margin: 0 0 6px 0;
-        font-size: 15px;
-        color: #1a202c;
-        font-weight: 700;
-    }
-
-    .elegant-prof-info p {
-        margin: 0 0 4px 0;
-        font-size: 13px;
-        color: #4a5568;
-    }
-
-    .elegant-prof-info p b {
-        color: #064e3b;
-    }
-
-    /* النصوص القائمة داخل الكروت */
-    .elegant-text-line {
-        font-size: 13.5px;
-        margin: 0 0 10px 0;
-        line-height: 1.6;
-        color: #4a5568;
-    }
-    
-    .elegant-text-line:last-child {
-        margin-bottom: 0;
-    }
-
-    /* كرت الفهرس الممتد البسيط */
-    .elegant-full-card {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 25px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-    }
-
-    .elegant-index-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px 25px;
-    }
-
-    .elegant-index-item {
-        font-size: 13.5px;
-        color: #4a5568;
-        line-height: 1.5;
-        display: flex;
-        gap: 6px;
-    }
-
-    .elegant-index-item span {
-        color: #d97706;
-        font-weight: bold;
-    }
-
-    /* كرت الأهداف البيداغوجية */
-    .elegant-goals-card {
-        background-color: #f8fafc; /* خلفية هادئة جداً تميل للرمادي الفاتح */
-        border: 1px solid #e2e8f0;
-        border-right: 4px solid #064e3b; /* تمييز الهدف بلون المقياس */
-        border-radius: 4px 8px 8px 4px;
-        padding: 25px;
-    }
-
-    .elegant-goals-title {
-        color: #064e3b;
-        font-size: 15px;
-        font-weight: 700;
-        margin-top: 0;
-        margin-bottom: 12px;
-    }
-
-    .elegant-goals-list {
-        margin: 0;
-        padding-right: 20px;
-    }
-
-    .elegant-goals-list li {
-        font-size: 13.5px;
-        color: #4a5568;
-        margin-bottom: 8px;
-        line-height: 1.6;
-    }
-
-    .elegant-goals-list li:last-child {
-        margin-bottom: 0;
-    }
-
-    /* التجاوب مع الشاشات المتنوعة */
-    @media (max-width: 992px) {
-        .elegant-grid-top { grid-template-columns: 1fr; }
-        .elegant-index-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 640px) {
-        .elegant-index-grid { grid-template-columns: 1fr; }
+        .elegant-prof-box { justify-content: center; text-align: center; }
     }
 </style>
 
@@ -538,12 +410,9 @@
 
     </div>
 
-    <!-- ======================================================== -->
-<!-- كود الفهرس المصلح تماماً والموزون مع الهوامش اليمنى واليسرى بالملي -->
-<!-- ======================================================== -->
 <style>
     .methodical-index-card {
-        box-sizing: border-box; /* هذا السطر السحري يمنع خروج الإطار عن الهامش اليساري نهائياً */
+        box-sizing: border-box;
         width: 100%;
         background-color: #ffffff;
         border: 1px solid #e2e8f0;
@@ -579,7 +448,7 @@
 
     .methodical-item {
         display: grid;
-        grid-template-columns: 140px 1fr; /* مسافة ثابتة وموزونة لاسم المحور */
+        grid-template-columns: 140px 1fr;
         align-items: flex-start;
         font-size: 14px;
         color: #4a5568;
@@ -606,7 +475,11 @@
 
     @media (max-width: 768px) {
         .methodical-grid { grid-template-columns: 1fr; gap: 0; }
-        .methodical-item { border-bottom: 1px dashed #e2e8f0 !important; }
+        .methodical-item { 
+            grid-template-columns: 1fr;
+            gap: 4px;
+            border-bottom: 1px dashed #e2e8f0 !important; 
+        }
     }
 </style>
 
@@ -668,9 +541,8 @@
 
     </div>
 </div>
-<!-- ======================================================== -->
 
-    <!-- كرت الأهداف البيداغوجية العامة المختوم بوقار -->
+    <!-- كرت الأهداف البيداغوجية العامة -->
     <div class="elegant-goals-card">
         <div class="elegant-goals-title">الأهداف البيداغوجية العامة (أن يكون الطالب في نهاية هذا الجزء قادراً على):</div>
         <ul class="elegant-goals-list">
@@ -681,683 +553,675 @@
     </div>
 
 </div>
-<!-- ======================================================== -->
 
-    <!-- جدول السيناريو -->
-  <!-- بداية المحور الأول المعاد صياغته: الفكر السياسي: تحديدات منهجية -->
+    <!-- جدول السيناريو - المحور الأول -->
     <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور الأول: الفكر السياسي: تحديدات منهجية</h2>
-        <p><strong>الهدف العام للمحور:</strong> تزويد الطالب بالأدوات المفاهيمية والمنهجية الضرورية لفهم تاريخ الفكر السياسي، والتمييز بين مستويات التفكير والنظرية السياسية.</p>
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور الأول: الفكر السياسي: تحديدات منهجية</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> تزويد الطالب بالأدوات المفاهيمية والمنهجية الضرورية لفهم تاريخ الفكر السياسي، والتمييز بين مستويات التفكير والنظرية السياسية.</p>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: التوظيف الميتودولوجي -->
-            <tr>
-                <td>1.1</td>
-                <td>أولاً: التوظيف الميتودولوجي لحياة المفكر السياسي</td>
-                <td>أن يطبق الطالب الاستفهامات الخمسة (من؟ متى؟ المنزع؟ المؤلفات؟ المنعطفات؟) للوصول لفهم عميق لسيرة المفكر.</td>
-                <td><strong>إنفوجرافيك تفاعلي:</strong> يعرض خريطة ذهنية للاستفهامات الخمسة مع مثال توضيحي لمارتن لوثر والتمييز بينه وبين كينغ.</td>
-                <td><strong>منتدى نقاش:</strong> اختر مفكراً سياسياً وقم بتفكيك سيرته بناءً على الأسئلة المنهجية الخمسة.</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثانياً: من هو المفكر السياسي -->
-            <tr>
-                <td>1.2</td>
-                <td>ثانياً: من هو المفكر السياسي Le Penseur Politique؟</td>
-                <td>أن يحدد الطالب المؤشرات الثلاثة لبلوغ مستوى الفكر (الرؤية، المنهج، والجهاز المفاهيمي).</td>
-                <td><strong>فيديو تعليمي قصير:</strong> يشرح الفرق المنهجي بين "الفكر" كخطاب شخصي و"الفلسفة" كخطاب موجه للخدمة الإنسانية.</td>
-                <td><strong>كويز Quiz:</strong> أسئلة حول ركائز "الرؤية" و"المنهج" في استهداف موضوع الدراسة بدقة.</td>
-                <td class="duration">30 دقيقة</td>
-            </tr>
-            <!-- ثالثاً: السمات العامة للفكر السياسي -->
-            <tr>
-                <td>1.3</td>
-                <td>ثالثاً: السمات العامة للفكر السياسي</td>
-                <td>أن يحلل الطالب الخصائص الأربع للفكر (العقلانية، الشمولية، اللازمنية، المعيارية) ويوظف استعارة "العربة" لأفلاطون.</td>
-                <td><strong>نص تفاعلي + بودكاست:</strong> شرح مفهوم "عقلنة القوة" واستعارة الحصانين (القوة الغضبية والشهوانية) تحت قيادة العقل.</td>
-                <td><strong>عصف ذهني:</strong> لماذا يعتبر العقل (قائد العربة) أداة ضرورية لتوجيه قوة الدولة نحو الصالح العام؟</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- رابعاً: الموضوع والمنهج والاستراتيجيات -->
-            <tr>
-                <td>1.4</td>
-                <td>رابعاً: الفكر السياسي: الموضوع والمنهج واستراتيجيات التفكير</td>
-                <td>أن يميز الطالب بين العرض التاريخي البحت والعرض التاريخي الفلسفي، ويطبق استراتيجية "التحدي والاستجابة".</td>
-                <td><strong>عرض تقديمي (Slides):</strong> يوضح منهج التحليل والمقارنة واستراتيجيات الرد والرد المضاد بين الحجج السياسية.</td>
-                <td><strong>واجب منزلي:</strong> لخص في فقرة كيف يمثل فكر هوبز أو أفلاطون استجابة لـ "اضطراب" في العالم الفعلي.</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور الأول المعاد صياغته -->
-  <!-- بداية المحور الثاني المعاد صياغته: بدء السياسة في الفكر الشرقي القديم -->
-    <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور الثاني: بدء السياسة في الفكر الشرقي القديم</h2>
-        <p><strong>الهدف العام للمحور:</strong> أن يستوعب الطالب طبيعة الفكر السياسي الروحي في الشرق القديم، ويحلل أسس السلطة والفضيلة في الفلسفة الكونفوشيوسية كنموذج للحكمة العملية.</p>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1.1</td>
+                    <td>أولاً: التوظيف الميتودولوجي لحياة المفكر السياسي</td>
+                    <td>أن يطبق الطالب الاستفهامات الخمسة (من؟ متى؟ المنزع؟ المؤلفات؟ المنعطفات؟) للوصول لفهم عميق لسيرة المفكر.</td>
+                    <td><strong>إنفوجرافيك تفاعلي:</strong> يعرض خريطة ذهنية للاستفهامات الخمسة مع مثال توضيحي لمارتن لوثر والتمييز بينه وبين كينغ.</td>
+                    <td><strong>منتدى نقاش:</strong> اختر مفكراً سياسياً وقم بتفكيك سيرته بناءً على الأسئلة المنهجية الخمسة.</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>1.2</td>
+                    <td>ثانياً: من هو المفكر السياسي Le Penseur Politique؟</td>
+                    <td>أن يحدد الطالب المؤشرات الثلاثة لبلوغ مستوى الفكر (الرؤية، المنهج، والجهاز المفاهيمي).</td>
+                    <td><strong>فيديو تعليمي قصير:</strong> يشرح الفرق المنهجي بين "الفكر" كخطاب شخصي و"الفلسفة" كخطاب موجه للخدمة الإنسانية.</td>
+                    <td><strong>كويز Quiz:</strong> أسئلة حول ركائز "الرؤية" و"المنهج" في استهداف موضوع الدراسة بدقة.</td>
+                    <td class="duration">30 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>1.3</td>
+                    <td>ثالثاً: السمات العامة للفكر السياسي</td>
+                    <td>أن يحلل الطالب الخصائص الأربع للفكر (العقلانية، الشمولية، اللازمنية، المعيارية) ويوظف استعارة "العربة" لأفلاطون.</td>
+                    <td><strong>نص تفاعلي + بودكاست:</strong> شرح مفهوم "عقلنة القوة" واستعارة الحصانين (القوة الغضبية والشهوانية) تحت قيادة العقل.</td>
+                    <td><strong>عصف ذهني:</strong> لماذا يعتبر العقل (قائد العربة) أداة ضرورية لتوجيه قوة الدولة نحو الصالح العام?</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>1.4</td>
+                    <td>رابعاً: الفكر السياسي: الموضوع والمنهج واستراتيجيات التفكير</td>
+                    <td>أن يميز الطالب بين العرض التاريخي البحت والعرض التاريخي الفلسفي، ويطبق استراتيجية "التحدي والاستجابة".</td>
+                    <td><strong>عرض تقديمي (Slides):</strong> يوضح منهج التحليل والمقارنة واستراتيجيات الرد والرد المضاد بين الحجج السياسية.</td>
+                    <td><strong>واجب منزلي:</strong> لخص في فقرة كيف يمثل فكر هوبز أو أفلاطون استجابة لـ "اضطراب" في العالم الفعلي.</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: إمكانية وجود تفكير سياسي -->
-            <tr>
-                <td>2.1</td>
-                <td>أولاً: حول إمكانية وجود تفكير سياسي في الشرق</td>
-                <td>أن يحدد الطالب السمات الأربع للفكر الشرقي (روحي، ثابت، ميتافيزيقي، غير تجزيئي) ويفهم سياق نشأته.</td>
-                <td><strong>إنفوجرافيك:</strong> يوضح خصائص الفكر الشرقي وتداخله مع الدين والأساطير مقابل الفكر البرهاني.</td>
-                <td><strong>عصف ذهني:</strong> لماذا لم يتبلور الفكر السياسي في الحضارات القديمة كنسق فلسفي مستقل؟</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثانياً: شهادة الغرب -->
-            <tr>
-                <td>2.2</td>
-                <td>ثانياً: شهادة الغرب بوجود حكمة عملية شرقية</td>
-                <td>أن يحلل الطالب إشادة فلاسفة الغرب (أفلاطون، فرنسوا شاتليه) بالنظم السياسية الشرقية (مصر، دولة موسى).</td>
-                <td><strong>فيديو تعليمي:</strong> يتناول شهادة شاتليه حول "دولة الصحراء الموسوية" كنموذج أول للسلطة المنظمة.</td>
-                <td><strong>كويز:</strong> أسئلة حول اعتراف اليونان بسبق الأنظمة الشرقية في الإدارة والتحليل السياسي.</td>
-                <td class="duration">30 دقيقة</td>
-            </tr>
-            <!-- ثالثاً: سؤال السياسة الفاضلة -->
-            <tr>
-                <td>2.3</td>
-                <td>ثالثاً: سؤال السياسة الفاضلة عند كونفوشيوس</td>
-                <td>أن يستوعب الطالب مفهوم "تفويض السماء" وارتباطه بحكمة الحاكم، وحق الشعب في عزل الحاكم المستبد.</td>
-                <td><strong>نص تفاعلي:</strong> يشرح تاريخ أسرة "تشو" وانتقال الصين من العصر الذهبي إلى عصر المؤامرات والعنف.</td>
-                <td><strong>منتدى نقاش:</strong> ناقش مفهوم "تفويض السماء" كأداة شرعية لمواجهة الطغيان والفساد.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- رابعاً: مبادئ الفكر السياسي الكونفوشوسي -->
-            <tr>
-                <td>2.4</td>
-                <td>رابعاً: مناقشة مبادئ الفكر السياسي الكونفوشوسي</td>
-                <td>أن يحلل الطالب ركائز الدولة المستقرة (الثقة، العدالة، الحكم بالفضيلة) والتمييز بين الإقناع والإكراه.</td>
-                <td><strong>بودكاست صوتي:</strong> يتناول فلسفة "الاقتداء" ومبدأ الوسط الذهبي عند كونفوشيوس.</td>
-                <td><strong>واجب منزلي:</strong> لخص في فقرة شروط الحاكم الحكيم وعلاقة ذلك بمصالح الرعية.</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- خامساً: الكونفوشيوسية الجديدة -->
-            <tr>
-                <td>2.5</td>
-                <td>خامساً: ما بعد الكونفوشيوسية أو الكونفوشيوسية الجديدة</td>
-                <td>أن يدرك الطالب الربط بين السياسة والميتافيزيقا، ودور "الرقابة العلوية" في الحفاظ على استقرار المدينة.</td>
-                <td><strong>مخطط مفاهيمي:</strong> يوضح كيف تصبح "السماء" في الاعتقاد الصيني أداة للثورة الشعبية ضد الطغيان.</td>
-                <td><strong>سؤال تقييمي:</strong> كيف يحول "التفويض السماوي" الحكم من سلطة مطلقة إلى مسؤولية شعبية؟</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور الثاني المعاد صياغته -->
- <!-- بداية المحور الثالث الأصلي: الاستشكال السياسي في الفكر الإغريقي (التنظير لدولة المدينة) -->
+    <!-- جدول السيناريو - المحور الثاني -->
     <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور الثالث: الاستشكال السياسي في الفكر الإغريقي (التنظير لدولة المدينة)</h2>
-        <p><strong>الهدف العام للمحور:</strong> تتبع تطور الفكر السياسي اليوناني من الممارسة القبلية والملكية إلى قمة التنظير الفلسفي مع سقراط وأفلاطون وأرسطو، وفهم كيفية بناء نموذج "دولة المدينة".</p>
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور الثاني: بدء السياسة في الفكر الشرقي القديم</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> أن يستوعب الطالب طبيعة الفكر السياسي الروحي في الشرق القديم، ويحلل أسس السلطة والفضيلة في الفلسفة الكونفوشيوسية كنموذج للحكمة العملية.</p>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس الأصلي)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: تحولات نظام الحكم -->
-            <tr>
-                <td>3.1</td>
-                <td>تحولات نظام الحكم والحياة السياسية في ظل البدايات الإغريقية</td>
-                <td>أن يحلل الطالب انتقال السلطة من الملكية الأبوية (نظام هوميروس) إلى الأوليغارشية ثم الديمقراطية الأثينية.</td>
-                <td><strong>خريطة زمنية تفاعلية:</strong> توضح مراحل تطور الدستور اليوناني من عهد سولون إلى كاليستينن.</td>
-                <td><strong>كويز:</strong> أسئلة حول خصائص الملكية البطركية والفرق بينها وبين حكم الطغاة.</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثانياً: سقراط والديمقراطية -->
-            <tr>
-                <td>3.2</td>
-                <td>سقراط والديمقراطية (محاكمة الدفاع: Apology)</td>
-                <td>أن يشرح الطالب نقد سقراط للديمقراطية القائمة على المساواة العددية، ويحلل تهم "إفساد الشباب" و"إنكار الآلهة".</td>
-                <td><strong>بودكاست درامي:</strong> مقتطفات من "محاورة الدفاع" تبرز الصراع بين العقل والسلطة السياسية.</td>
-                <td><strong>منتدى نقاش:</strong> هل تعتبر محاكمة سقراط دفاعاً عن استقرار المجتمع أم قمعاً للفكر النقدي؟</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- ثالثاً: أفلاطون -->
-            <tr>
-                <td>3.3</td>
-                <td>أفلاطون واستئناف القول في السياسة</td>
-                <td>أن يربط الطالب بين تقسيم النفس (عاقلة، غضبية، شهوانية) وطبقات المدينة، ويشرح نظرية "الحاكم الفيلسوف".</td>
-                <td><strong>إنفوجرافيك:</strong> يوضح الهيكل الطبقي للجمهورية والبرنامج التربوي لإعداد النخبة السياسية.</td>
-                <td><strong>واجب منزلي:</strong> لخص في فقرة مفهوم العدالة عند أفلاطون بوصفها "تأدية كل طبقة لوظيفتها".</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- رابعاً: أرسطو -->
-            <tr>
-                <td>3.4</td>
-                <td>أرسطو وبراكسيس السياسة</td>
-                <td>أن يميز الطالب بين العلم النظري والعملي (Praxis)، ويحلل نشأة الدولة ككائن عضوي ينمو من الأسرة إلى المدينة.</td>
-                <td><strong>فيديو شارح:</strong> يعرض مفهوم "الإنسان حيوان سياسي" وأهمية سيادة القانون لتحقيق الاكتفاء الذاتي.</td>
-                <td><strong>سؤال عصف ذهني:</strong> لماذا اعتبر أرسطو أن الدولة تسبق الفرد من حيث الغاية والكمال؟</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور الثالث الأصلي -->
-  <!-- بداية المحور الرابع: التوجهات الجديدة للفكر السياسي بعد دولة المدينة -->
-    <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور الرابع: التوجهات الجديدة للفكر السياسي بعد دولة المدينة</h2>
-        <p><strong>الهدف العام للمحور:</strong> أن يستوعب الطالب التحول الجوهري في الفكر السياسي الهلنستي، حيث انتقل التركيز من "أفضل نظام سياسي للمدينة" إلى "سعادة الفرد الشخصية" وظهور مفاهيم المواطنة العالمية.</p>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2.1</td>
+                    <td>أولاً: حول إمكانية وجود تفكير سياسي في الشرق</td>
+                    <td>أن يحدد الطالب السمات الأربع للفكر الشرقي (روحي، ثابت، ميتافيزيقي، غير تجزيئي) ويفهم سياق نشأته.</td>
+                    <td><strong>إنفوجرافيك:</strong> يوضح خصائص الفكر الشرقي وتداخله مع الدين والأساطير مقابل الفكر البرهاني.</td>
+                    <td><strong>عصف ذهني:</strong> لماذا لم يتبلور الفكر السياسي في الحضارات القديمة كنسق فلسفي مستقل؟</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>2.2</td>
+                    <td>ثانياً: شهادة الغرب بوجود حكمة عملية شرقية</td>
+                    <td>أن يحلل الطالب إشادة فلاسفة الغرب (أفلاطون، فرنسوا شاتليه) بالنظم السياسية الشرقية (مصر، دولة موسى).</td>
+                    <td><strong>فيديو تعليمي:</strong> يتناول شهادة شاتليه حول "دولة الصحراء الموسوية" كنموذج أول للسلطة المنظمة.</td>
+                    <td><strong>كويز:</strong> أسئلة حول اعتراف اليونان بسبق الأنظمة الشرقية في الإدارة والتحليل السياسي.</td>
+                    <td class="duration">30 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>2.3</td>
+                    <td>ثالثاً: سؤال السياسة الفاضلة عند كونفوشيوس</td>
+                    <td>أن يستوعب الطالب مفهوم "تفويض السماء" وارتباطه بحكمة الحاكم, وحق الشعب في عزل الحاكم المستبد.</td>
+                    <td><strong>نص تفاعلي:</strong> يشرح تاريخ أسرة "تشو" وانتقال الصين من العصر الذهبي إلى عصر المؤامرات والعنف.</td>
+                    <td><strong>منتدى نقاش:</strong> ناقش مفهوم "تفويض السماء" كأداة شرعية لمواجهة الطغيان والفساد.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>2.4</td>
+                    <td>رابعاً: مناقشة مبادئ الفكر السياسي الكونفوشوسي</td>
+                    <td>أن يحلل الطالب ركائز الدولة المستقرة (الثقة، العدالة، الحكم بالفضيلة) والتمييز بين الإقناع والإكراه.</td>
+                    <td><strong>بودكاست صوتي:</strong> يتناول فلسفة "الاقتداء" ومبدأ الوسط الذهبي عند كونفوشيوس.</td>
+                    <td><strong>واجب منزلي:</strong> لخص في فقرة شروط الحاكم الحكيم وعلاقة ذلك بمصالح الرعية.</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>2.5</td>
+                    <td>خامساً: ما بعد الكونفوشيوسية أو الكونفوشيوسية الجديدة</td>
+                    <td>أن يدرك الطالب الربط بين السياسة والميتافيزيقا، ودور "الرقابة العلوية" في الحفاظ على استقرار المدينة.</td>
+                    <td><strong>مخطط مفاهيمي:</strong> يوضح كيف تصبح "السماء" في الاعتقاد الصيني أداة للثورة الشعبية ضد الطغيان.</td>
+                    <td><strong>سؤال تقييمي:</strong> كيف يحول "التفويض السماوي" الحكم من سلطة مطلقة إلى مسؤولية شعبية؟</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: الأبيقوريون -->
-            <tr>
-                <td>4.1</td>
-                <td>أولاً: الأبيقوريون (Epicureans)</td>
-                <td>أن يشرح الطالب مبدأ "السعادة الفردية" كغاية مطلقة، ويفهم العدالة كـ "اتفاقية" مصلحية لتجنب الألم.</td>
-                <td><strong>فيديو شارح قصير:</strong> يعرض فلسفة أبيقور حول الدولة كوسيلة أمنية وليست غاية معنوية.</td>
-                <td><strong>كويز:</strong> أسئلة حول طبيعة "العدالة الاتفاقية" والفرق بينها وبين العدالة المطلقة عند أفلاطون.</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثانياً: السينيكيون -->
-            <tr>
-                <td>4.2</td>
-                <td>ثانياً: السينيكيون (Cynics)</td>
-                <td>أن يحلل الطالب فكرة "المواطنة العالمية" (Cosmopolis) والمساواة الكاملة بين البشر بعيداً عن فوارق الطبقة.</td>
-                <td><strong>إنفوجرافيك مقارنة:</strong> يوضح رفض السينيكيين لـ "دولة المدينة" ودعوتهم للانتماء للعالم ككل.</td>
-                <td><strong>عصف ذهني:</strong> لماذا طالب السينيكيون بإلغاء الفوارق الاجتماعية المصطنعة؟</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثالثاً: الرواقيون -->
-            <tr>
-                <td>4.3</td>
-                <td>ثالثاً: الرواقيون (Stoics)</td>
-                <td>أن يستوعب الطالب مفهوم "القانون الطبيعي" ودوره في تبرير الإمبراطورية كوحدة سياسية تضم شعوباً مختلفة.</td>
-                <td><strong>بودكاست تعليمي:</strong> يتناول دعوة الإسكندر المقدوني للتآخي بين الشعوب وتأثيرها على الفكر الرواقي.</td>
-                <td><strong>واجب منزلي:</strong> لخص في فقرة كيف مهدت الرواقية الطريق للفقه القانوني الروماني عبر "القانون الطبيعي".</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور الرابع -->
- <!-- بداية المحور الخامس: الفكر السياسي الروماني -->
+    <!-- جدول السيناريو - المحور الثالث -->
     <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور الخامس: الفكر السياسي الروماني</h2>
-        <p><strong>الهدف العام للمحور:</strong> أن يحلل الطالب انتقال الفكر السياسي من "دولة المدينة" إلى "الإمبراطورية العالمية"، ويفهم مساهمة الرومان في تطوير الفكر القانوني ومفاهيم المواطنة والواجب العام.</p>
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور الثالث: الاستشكال السياسي في الفكر الإغريقي (التنظير لدولة المدينة)</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> تتبع تطور الفكر السياسي اليوناني من الممارسة القبلية والملكية إلى قمة التنظير الفلسفي مع سقراط وأفلاطون وأرسطو، وفهم كيفية بناء نموذج "دولة المدينة".</p>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: خصائص الفكر السياسي الروماني -->
-            <tr>
-                <td>5.1</td>
-                <td>أولاً: خصائص الفكر السياسي الروماني</td>
-                <td>أن يحدد الطالب سمات العقلية الرومانية (الروح العسكرية، التضحية) ويفهم نشأة "قانون الشعوب" كحل عملي لإدارة التنوع.</td>
-                <td><strong>إنفوجرافيك:</strong> يوضح تطور القانون الروماني من أعراف دينية ضيقة إلى "قانون الشعوب" العالمي.</td>
-                <td><strong>سؤال عصف ذهني:</strong> كيف ساهم التوسع الروماني في تحويل القانون من طقس ديني إلى أداة مدنية عالمية؟</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثانياً: بوليبيوس -->
-            <tr>
-                <td>5.2</td>
-                <td>ثانياً: بوليبيوس (Polybius)</td>
-                <td>أن يحلل الطالب أسباب تفوق روما من منظور "عقلاني"، ويفهم دور "الدستور المختلط" في استقرار الدولة الإمبريالية.</td>
-                <td><strong>فيديو شارح:</strong> يتناول إعجاب بوليبيوس بانضباط الجيش الروماني ونظامه السياسي الذي يمنع الاستبداد.</td>
-                <td><strong>كويز:</strong> أسئلة حول الفرق بين "النجاح بسبب الحظ" و"النجاح بسبب الفطنة السياسية" عند بوليبيوس.</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثالثاً: شيشرون -->
-            <tr>
-                <td>5.3</td>
-                <td>ثالثاً: شيشرون (Cicero)</td>
-                <td>أن يستوعب الطالب الربط بين القانون والأخلاق، ويدرك نقد شيشرون للأبيقوريين بضرورة المشاركة السياسية المستمرة.</td>
-                <td><strong>نص تفاعلي:</strong> يعرض مقتطفات من كتاب "الجمهورية" لشيشرون حول القانون الطبيعي والخدمة العامة.</td>
-                <td><strong>منتدى نقاش:</strong> ناقش حجة شيشرون: "لماذا يجب على الفرد المشاركة في السياسة بشكل مستمر وليس فقط وقت الضرورة؟".</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- رابعاً: سينيكا -->
-            <tr>
-                <td>5.4</td>
-                <td>رابعاً: سينيكا (Seneca)</td>
-                <td>أن يميز الطالب بين "المجتمع العاقل العالمي" و"الدولة السياسية"، ويفهم فكرة "العصر الذهبي" قبل ظهور الملكية الخاصة.</td>
-                <td><strong>بودكاست تعليمي:</strong> يشرح نظرية سينيكا حول انحراف الطبيعة البشرية وضرورة المؤسسات القانونية كعلاج للفساد.</td>
-                <td><strong>واجب منزلي:</strong> لخص في فقرة مفهوم "الجمهوريتين" عند سينيكا وعلاقة ذلك بالقانون الطبيعي.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور الخامس -->
- <!-- بداية المحور السادس: الفكر السياسي المسيحي -->
-    <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور السادس: الفكر السياسي المسيحي</h2>
-        <p><strong>الهدف العام للمحور:</strong> أن يستوعب الطالب ثنائية السلطة في الفكر القروسطي، ويميز بين المنهج الأكويني التوفيقي والمنهج الأوغسطيني الذي يركز على "مدينة الرب" وعجز العقل البشري أمام الخطيئة.</p>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس الأصلي)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3.1</td>
+                    <td>تحولات نظام الحكم والحياة السياسية في ظل البدايات الإغريقية</td>
+                    <td>أن يحلل الطالب انتقال السلطة من الملكية الأبوية (نظام هوميروس) إلى الأوليغارشية ثم الديمقراطية الأثينية.</td>
+                    <td><strong>خريطة زمنية تفاعلية:</strong> توضح مراحل تطور الدستور اليوناني من عهد سولون إلى كاليستينن.</td>
+                    <td><strong>كويز:</strong> أسئلة حول خصائص الملكية البطركية والفرق بينها وبين حكم الطغاة.</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>3.2</td>
+                    <td>سقراط والديمقراطية (محاكمة الدفاع: Apology)</td>
+                    <td>أن يشرح الطالب نقد سقراط للديمقراطية القائمة على المساواة العددية، ويحلل تهم "إفساد الشباب" و"إنكار الآلهة".</td>
+                    <td><strong>بودكاست درامي:</strong> مقتطفات من "محاورة الدفاع" تبرز الصراع بين العقل والسلطة السياسية.</td>
+                    <td><strong>منتدى نقاش:</strong> هل تعتبر محاكمة سقراط دفاعاً عن استقرار المجتمع أم قمعاً للفكر النقدي؟</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>3.3</td>
+                    <td>أفلاطون واستئناف القول في السياسة</td>
+                    <td>أن يربط الطالب بين تقسيم النفس (عاقلة، غضبية، شهوانية) وطبقات المدينة، ويشرح نظرية "الحاكم الفيلسوف".</td>
+                    <td><strong>إنفوجرافيك:</strong> يوضح الهيكل الطبقي للجمهورية والبرنامج التربوي لإعداد النخبة السياسية.</td>
+                    <td><strong>واجب منزلي:</strong> لخص في فقرة مفهوم العدالة عند أفلاطون بوصفها "تأدية كل طبقة لوظيفتها".</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>3.4</td>
+                    <td>أرسطو وبراكسيس السياسة</td>
+                    <td>أن يميز الطالب بين العلم النظري والعملي (Praxis)، ويحلل نشأة الدولة ككائن عضوي ينمو من الأسرة إلى المدينة.</td>
+                    <td><strong>فيديو شارح:</strong> يعرض مفهوم "الإنسان حيوان سياسي" وأهمية سيادة القانون لتحقيق الاكتفاء الذاتي.</td>
+                    <td><strong>سؤال عصف ذهني:</strong> لماذا اعتبر أرسطو أن الدولة تسبق الفرد من حيث الغاية والكمال؟</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: مدخل تمهيدي -->
-            <tr>
-                <td>6.1</td>
-                <td>أولاً: مدخل تمهيدي للفكر السياسي المسيحي</td>
-                <td>أن يحدد الطالب سمات الفكر المسيحي (الفصل بين السلطة الزمنية والروحية) ومبدأ طاعة الأنظمة القائمة.</td>
-                <td><strong>إنفوجرافيك:</strong> يوضح شعار "ما لقيصر لقيصر وما لله لله" وتوزيع الولاء بين الكنيسة والإمبراطور.</td>
-                <td><strong>منتدى نقاش:</strong> كيف ساهمت المسيحية في خلق "ازدواجية السلطة" مقارنة بوحدتها في دولة المدينة اليونانية؟</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثانياً: توما الأكويني -->
-            <tr>
-                <td>6.2</td>
-                <td>ثانياً: القديس توما الأكويني وإعادة بناء مفهوم العدالة</td>
-                <td>أن يحلل الطالب محاولة الأكويني للتوفيق بين الأرسطية والثيولوجيا، ويصنف رتب القانون الأربع.</td>
-                <td><strong>فيديو تعليمي:</strong> يشرح كتاب "الخلاصة اللاهوتية" وكيف أعاد الأكويني بعث فكرة "الإنسان حيوان سياسي".</td>
-                <td><strong>كويز Quiz:</strong> أسئلة حول رتب القانون (الأزلي، الطبيعي، الإلهي، الإنساني) والعلاقة بين العقل والإيمان.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- تابع لتوما الأكويني: تركيبة المجتمع -->
-            <tr>
-                <td>6.3</td>
-                <td>الهندسة الاجتماعية للمجتمع القروسطي عند الأكويني</td>
-                <td>أن يميز الطالب بين طبقات المجتمع الإقطاعي (الملك، البارونات، الأقنان) ودور العقل في الصالح العام.</td>
-                <td><strong>مخطط هرمي تفاعلي:</strong> يعرض تركيبة المجتمع المسيحي القروسطي القائم على الريع والخدمة العسكرية.</td>
-                <td><strong>عصف ذهني:</strong> لماذا اعتبر الأكويني أن الدولة مؤسسة طبيعية تهدف لتحقيق الصالح العام عبر العقل؟</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثالثاً: سان أوغستين -->
-            <tr>
-                <td>6.4</td>
-                <td>ثالثاً: مدخل إلى القديس سان أوغستين</td>
-                <td>أن يحلل الطالب نظرية "الجمهوريتين" (مدينة الرب ومدينة الأرض) ويربطها بمفهوم الخطيئة الأولى.</td>
-                <td><strong>بودكاست صوتي:</strong> يتناول كتاب "مدينة الرب" والرد على اتهامات الوثنيين للمسيحية بعد سقوط روما.</td>
-                <td><strong>واجب منزلي:</strong> لخص في فقرة مقولة أوغستين "آمن كي تعقل" وعلاقة ذلك بمحدودية العقل الإنساني.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور السادس -->
-   <!-- بداية المحور السابع: التأصيل الإسلامي للسياسة -->
+    <!-- جدول السيناريو - المحور الرابع -->
     <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور السابع: التأصيل الإسلامي للسياسة</h2>
-        <p><strong>الهدف العام للمحور:</strong> أن يحلل الطالب أسس الدولة في الإسلام انطلاقاً من "وثيقة المدينة"، ويفهم جذور الصراع السياسي حول الخلافة، ويستوعب نظرية "العمران والعصبية" عند ابن خلدون كأول تفسير سوسيولوجي للدولة.</p>
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور الرابع: التوجهات الجديدة للفكر السياسي بعد دولة المدينة</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> أن يستوعب الطالب التحول الجوهري في الفكر السياسي الهلنستي، حيث انتقل التركيز من "أفضل نظام سياسي للمدينة" إلى "سعادة الفرد الشخصية" وظهور مفاهيم المواطنة العالمية.</p>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: المدينة النموذجية -->
-            <tr>
-                <td>7.1</td>
-                <td>أولاً: المدينة النموذجية في عهد دولة محمد صلى الله عليه وسلم</td>
-                <td>أن يحلل الطالب "وثيقة الصحيفة" كدستور مدني أسس لـ "الأمة" ككيان سياسي يتجاوز الروابط القبلية.</td>
-                <td><strong>نص تفاعلي + إنفوجرافيك:</strong> عرض بنود "الصحيفة" التي نظمت العلاقة بين المسلمين واليهود وسائر سكان المدينة.</td>
-                <td><strong>منتدى نقاش:</strong> كيف ساهمت الصحيفة في الانتقال من "الفرد القبلي" إلى "المواطن" في جماعة سياسية واحدة؟</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- ثانياً: الفرق الإسلامية وسؤال الخلافة -->
-            <tr>
-                <td>7.2</td>
-                <td>ثانياً: الفرق الإسلامية وسؤال الخلافة</td>
-                <td>أن يميز الطالب بين مواقف (السنة، الشيعة، الخوارج) حول شرعية الخليفة وطرق اختياره (البيعة مقابل النص).</td>
-                <td><strong>مخطط مقارنة (Table):</strong> يبرز الفوارق المنهجية بين "الخلافة" كمنصب دنيوي-ديني و"الإمامة" كوراثة دينية.</td>
-                <td><strong>كويز Quiz:</strong> أسئلة حول مفهوم "البيعة" وشروط الخليفة عند مختلف المذاهب الإسلامية.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- ثالثاً: الفكر السياسي الخلدوني (القسم الأول) -->
-            <tr>
-                <td>7.3</td>
-                <td>ثالثاً: الفكر السياسي الخلدوني (العمران والوازع)</td>
-                <td>أن يشرح الطالب ضرورة "الوازع السياسي" (الدولة) لمنع العدوان الطبيعي المجبول عليه البشر.</td>
-                <td><strong>فيديو تعليمي:</strong> يشرح تأثر ابن خلدون بأرسطو في فكرة "الإنسان مدني بالطبع" وحاجة البشر للتعاون.</td>
-                <td><strong>سؤال عصف ذهني:</strong> لماذا يعتبر ابن خلدون "الوازع" (السلطة) ضرورة مادية لبقاء النوع البشري؟</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- تابع لابن خلدون: العصبية والدولة -->
-            <tr>
-                <td>7.4</td>
-                <td>نظرية العصبية ودورة حياة الدولة</td>
-                <td>أن يطبق الطالب مفهوم "العصبية" على مراحل نشأة الدول، ويفهم قانون الأجيال الثلاثة (البداوة، الملك، الترف).</td>
-                <td><strong>مخطط بياني تفاعلي:</strong> يمثل منحنى "صعود وهبوط" الدول عند ابن خلدون وارتباطها بالترف وفناء العصبية.</td>
-                <td><strong>واجب منزلي:</strong> لخص في فقرة كيف تتحول العصبية من "رئاسة" في البدو إلى "ملك وقهر" في الحضر.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور السابع -->
-  <!-- بداية المحور الثامن: الإصلاحات الدينية في أوروبا -->
-    <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور الثامن: الإصلاحات الدينية في أوروبا</h2>
-        <p><strong>الهدف العام للمحور:</strong> أن يحلل الطالب أثر الحركة البروتستانتية في تحرير الدولة من هيمنة الكنيسة الكاثوليكية، ويفهم العلاقة بين الإيمان الفردي والسلطة الزمنية عند لوثر وكالفن.</p>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4.1</td>
+                    <td>أولاً: الأبيقوريون (Epicureans)</td>
+                    <td>أن يشرح الطالب مبدأ "السعادة الفردية" كغاية مطلقة، ويفهم العدالة كـ "اتفاقية" مصلحية لتجنب الألم.</td>
+                    <td><strong>فيديو شارح قصير:</strong> يعرض فلسفة أبيقور حول الدولة كوسيلة أمنية وليست غاية معنوية.</td>
+                    <td><strong>كويز:</strong> أسئلة حول طبيعة "العدالة الاتفاقية" والفرق بينها وبين العدالة المطلقة عند أفلاطون.</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>4.2</td>
+                    <td>ثانياً: السينيكيون (Cynics)</td>
+                    <td>أن يحلل الطالب فكرة "المواطنة العالمية" (Cosmopolis) والمساواة الكاملة بين البشر بعيداً عن فوارق الطبقة.</td>
+                    <td><strong>إنفوجرافيك مقارنة:</strong> يوضح رفض السينيكيين لـ "دولة المدينة" ودعوتهم للانتماء للعالم ككل.</td>
+                    <td><strong>عصف ذهني:</strong> لماذا طالب السينيكيون بإلغاء الفوارق الاجتماعية المصطنعة؟</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>4.3</td>
+                    <td>ثالثاً: الرواقيون (Stoics)</td>
+                    <td>أن يستوعب الطالب مفهوم "القانون الطبيعي" ودوره في تبرير الإمبراطورية كوحدة سياسية تضم شعوباً مختلفة.</td>
+                    <td><strong>بودكاست تعليمي:</strong> يتناول دعوة الإسكندر المقدوني للتآخي بين الشعوب وتأثيرها على الفكر الرواقي.</td>
+                    <td><strong>واجب منزلي:</strong> لخص في فقرة كيف مهدت الرواقية الطريق للفقه القانوني الروماني عبر "القانون الطبيعي".</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: مارتن لوثر - الجانب الإيماني -->
-            <tr>
-                <td>8.1</td>
-                <td>أولاً: مارتن لوثر وعقيدة التبرير بالإيمان</td>
-                <td>أن يشرح الطالب مبدأ "المسؤولية الفردية عن الإيمان" وكيف ألغى لوثر الوساطة الكنسية بين العبد والرب.</td>
-                <td><strong>فيديو تعليمي:</strong> يتناول سيرة لوثر وتعليقه للاحتجاجات الـ 95 على باب الكنيسة في "وتنبرج".</td>
-                <td><strong>كويز Quiz:</strong> أسئلة حول مفهوم "الحرية الروحانية" عند لوثر ورفضه لصكوك الغفران.</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- أولاً: مارتن لوثر - الجانب السياسي -->
-            <tr>
-                <td>8.2</td>
-                <td>اللاهوت السياسي عند لوثر (الحكومتان)</td>
-                <td>أن يميز الطالب بين "الحكومة الروحية" و"الحكومة الدنيوية"، ويفهم مبررات طاعة السلطة المدنية.</td>
-                <td><strong>إنفوجرافيك:</strong> يوضح تقسيم لوثر للسلطة (الإنجيل للكنيسة، والسيف والقانون المدني للدولة).</td>
-                <td><strong>منتدى نقاش:</strong> لماذا دعم لوثر الأنظمة الملكية في مواجهة سلطة البابا؟</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- ثانياً: جان كالفن - العلاقة بين الدين والدولة -->
-            <tr>
-                <td>8.3</td>
-                <td>ثانياً: جان كالفن ومبدأ الفصل بين الكنيسة والدولة</td>
-                <td>أن يحلل الطالب رؤية كالفن التي تفصل بين المؤسستين (الكنيسة والدولة) مع إبقائهما خاضعتين لسيادة الله.</td>
-                <td><strong>نص تفاعلي:</strong> يشرح الفرق بين "الدين" و"الكنيسة" في فكر كالفن وكيف تخدم الدولة مهمة التبشير.</td>
-                <td><strong>سؤال عصف ذهني:</strong> كيف تؤدي الدولة وظيفة "روحية" عند كالفن عبر الحفاظ على الهدوء المحلي؟</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثانياً: جان كالفن - المواطنة والإنضباط -->
-            <tr>
-                <td>8.4</td>
-                <td>الثيوقراطية والمسؤولية المدنية عند كالفن</td>
-                <td>أن يستوعب الطالب مفهوم "المواطن النموذجي" الذي تنتجه الكنيسة ليكون ركيزة للدولة المستقرة.</td>
-                <td><strong>بودكاست صوتي:</strong> يتناول تجربة كالفن في "جنيف" وكيف تحول المجتمع إلى قوة أخلاقية موحدة.</td>
-                <td><strong>واجب منزلي:</strong> لخص في فقرة كيف مهدت الإصلاحات الدينية الطريق لنشوء الدولة القومية المستقلة.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور الثامن -->
-  <!-- بداية المحور التاسع: الفكر السياسي في عصر النهضة -->
+    <!-- جدول السيناريو - المحور الخامس -->
     <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور التاسع: الفكر السياسي في عصر النهضة</h2>
-        <p><strong>الهدف العام للمحور:</strong> أن يحلل الطالب الانتقال من المرجعية الدينية إلى الواقعية السياسية (الميكيافيلية)، ويستوعب الأسس القانونية للدولة الحديثة عبر نظرية "السيادة" عند جان بودان.</p>
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور الخامس: الفكر السياسي الروماني</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> أن يحلل الطالب انتقال الفكر السياسي من "دولة المدينة" إلى "الإمبراطورية العالمية"، ويفهم مساهمة الرومان في تطوير الفكر القانوني ومفاهيم المواطنة والواجب العام.</p>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس الأصلي)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: نيقولا ميكيافيلي - السياق والفلسفة -->
-            <tr>
-                <td>9.1</td>
-                <td>أولاً: الفكر السياسي عند نيقولا ميكيافيلي (عصر النهضة)</td>
-                <td>أن يربط الطالب بين روح الإنسانية في عصر النهضة والتحول نحو الثقة بالذات والإبداع الإنساني بعيداً عن زهد العصور الوسطى.</td>
-                <td><strong>فيديو شارح قصير:</strong> يعرض حال إيطاليا المجزأة في القرن الخامس عشر وحلم ميكيافيلي بتوحيدها.</td>
-                <td><strong>عصف ذهني:</strong> لماذا يعتبر ميكيافيلي "النهضة كلها مختزلة في شخصه"؟</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ميكيافيلي - فن الحكم -->
-            <tr>
-                <td>9.2</td>
-                <td>ميكيافيلي: فن الوصول إلى السلطة والحفاظ عليها</td>
-                <td>أن يميز الطالب بين أطروحة "الأمير" (الحكم الاستبدادي للضرورة) و"الخطابات" (تفضيل الحكم الجمهوري والفضيلة المدنية).</td>
-                <td><strong>نص تفاعلي:</strong> مقارنة بين رؤية ميكيافيلي المتشائمة للطبيعة البشرية (الأنانية) وضرورة أن يكون الحاكم "مخوفاً لا محبوباً".</td>
-                <td><strong>منتدى نقاش:</strong> ناقش مفهوم "الغاية تبرر الوسيلة" من منظور ميكيافيلي الأخلاقي والسياسي.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- ثانياً: جان بودان - السياق والتسامح -->
-            <tr>
-                <td>9.3</td>
-                <td>ثانياً: جان بودان ونظرية السيادة (التسامح الديني)</td>
-                <td>أن يحلل الطالب موقف بودان من التسامح الديني كضرورة سياسية (وليس مبدأ أخلاقياً) لإنهاء الانقسام القومي في فرنسا.</td>
-                <td><strong>بودكاست تعليمي:</strong> يتناول كتاب "الكتب الست للجمهورية" وسياق مذبحة سان بارتلوميو.</td>
-                <td><strong>كويز Quiz:</strong> أسئلة حول دور "السياسيين" في إعلاء مصلحة الدولة فوق النزاعات الطائفية.</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- جان بودان - خصائص السيادة -->
-            <tr>
-                <td>9.4</td>
-                <td>مفهوم الدولة السيادية وخصائصها عند بودان</td>
-                <td>أن يحدد الطالب خصائص السيادة (غير قابلة للتجزئة، دائمة، ومطلقة) ويميز بينها وبين السلطات المؤقتة.</td>
-                <td><strong>إنفوجرافيك:</strong> يوضح هرمية السلطة وحدود السيادة المطلقة (القانون الإلهي، الطبيعي، والملكية الخاصة).</td>
-                <td><strong>واجب منزلي:</strong> لخص في فقرة كيف مهد بودان لمفهوم "الدولة الأمة" في الفكر السياسي الحديث.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور التاسع -->
-  <!-- بداية المحور العاشر: الفكر السياسي الحديث -->
-    <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور العاشر: الفكر السياسي الحديث</h2>
-        <p><strong>الهدف العام للمحور:</strong> أن يحلل الطالب أسس الحداثة السياسية القائمة على العقل والحرية، ويقارن بين نماذج العقد الاجتماعي، ويستوعب نقد المجتمع الرأسمالي من منظور ماركسي.</p>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5.1</td>
+                    <td>أولاً: خصائص الفكر السياسي الروماني</td>
+                    <td>أن يحدد الطالب سمات العقلية الرومانية (الروح العسكرية، التضحية) ويفهم نشأة "قانون الشعوب" كحل عملي لإدارة التنوع.</td>
+                    <td><strong>إنفوجرافيك:</strong> يوضح تطور القانون الروماني من أعراف دينية ضيقة إلى "قانون الشعوب" العالمي.</td>
+                    <td><strong>سؤال عصف ذهني:</strong> كيف ساهم التوسع الروماني في تحويل القانون من طقس ديني إلى أداة مدنية عالمية؟</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>5.2</td>
+                    <td>ثانياً: بوليبيوس (Polybius)</td>
+                    <td>أن يحلل الطالب أسباب تفوق روما من منظور "عقلاني"، ويفهم دور "الدستور المختلط" في استقرار الدولة الإمبريالية.</td>
+                    <td><strong>فيديو شارح:</strong> يتناول إعجاب بوليبيوس بانضباط الجيش الروماني ونظامه السياسي الذي يمنع الاستبداد.</td>
+                    <td><strong>كويز:</strong> أسئلة حول الفرق بين "النجاح بسبب الحظ" و"النجاح بسبب الفطنة السياسية" عند بوليبيوس.</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>5.3</td>
+                    <td>ثالثاً: شيشرون (Cicero)</td>
+                    <td>أن يستوعب الطالب الربط بين القانون والأخلاق، ويدرك نقد شيشرون للأبيقوريين بضرورة المشاركة السياسية المستمرة.</td>
+                    <td><strong>نص تفاعلي:</strong> يعرض مقتطفات من كتاب "الجمهورية" لشيشرون حول القانون الطبيعي والخدمة العامة.</td>
+                    <td><strong>منتدى نقاش:</strong> ناقش حجة شيشرون: "لماذا يجب على الفرد المشاركة في السياسة بشكل مستمر وليس فقط وقت الضرورة؟".</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>5.4</td>
+                    <td>رابعاً: سينيكا (Seneca)</td>
+                    <td>أن يميز الطالب بين "المجتمع العاقل العالمي" و"الدولة السياسية"، ويفهم فكرة "العصر الذهبي" قبل ظهور الملكية الخاصة.</td>
+                    <td><strong>بودكاست تعليمي:</strong> يشرح نظرية سينيكا حول انحراف الطبيعة البشرية وضرورة المؤسسات القانونية كعلاج للفساد.</td>
+                    <td><strong>واجب منزلي:</strong> لخص في فقرة مفهوم "الجمهوريتين" عند سينيكا وعلاقة ذلك بالقانون الطبيعي.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس الأصلي)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: هيجل -->
-            <tr>
-                <td>10.1</td>
-                <td>أولاً: الدولة والمجتمع المدني عند هيجل</td>
-                <td>أن يميز الطالب بين "المجتمع المدني" كساحة للمصالح الخاصة، و"الدولة" كتحقق فعلي للحرية والأخلاق الشاملة.</td>
-                <td><strong>فيديو تعليمي:</strong> يشرح جدلية الروح عند هيجل وكيف تعلو الدولة أخلاقياً على المجتمع المدني.</td>
-                <td><strong>عصف ذهني:</strong> لماذا اعتبر هيجل أن الحرية الحقيقية لا توجد إلا داخل الإطار القانوني للدولة؟</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- ثانياً: فلاسفة العقد الاجتماعي -->
-            <tr>
-                <td>10.2</td>
-                <td>ثانياً: فلاسفة العقد الاجتماعي (هوبز، لوك، روسو)</td>
-                <td>أن يقارن الطالب بين دوافع التعاقد (الخوف عند هوبز، حماية الملكية عند لوك، والحرية عند روسو).</td>
-                <td><strong>مخطط مقارنة تفاعلي:</strong> يوضح الفرق بين "حالة الطبيعة" وشكل السلطة الناتج عن العقد في كل نموذج.</td>
-                <td><strong>منتدى نقاش:</strong> أيهما أقرب للواقع السياسي المعاصر: نموذج لوك الليبرالي أم نموذج روسو في الإرادة العامة؟</td>
-                <td class="duration">90 دقيقة</td>
-            </tr>
-            <!-- ثالثاً: كارل ماركس -->
-            <tr>
-                <td>10.3</td>
-                <td>ثالثاً: كارل ماركس والفكر السياسي</td>
-                <td>أن يحلل الطالب البنية التحتية (الاقتصاد) وأثرها في صياغة البنية الفوقية (الدولة والقانون)، ويفهم مفهوم الصراع الطبقي.</td>
-                <td><strong>إنفوجرافيك:</strong> يمثل العلاقة بين وسائل الإنتاج وعلاقات الإنتاج وكيف تولد "فائض القيمة".</td>
-                <td><strong>كويز Quiz:</strong> أسئلة حول مفهوم "الوعي الزائف" ودور الدولة كأداة في يد الطبقة المسيطرة اقتصادياً.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور العاشر -->
- <!-- بداية المحور الحادي عشر: الفكر السياسي المعاصر -->
+    <!-- جدول السيناريو - المحور السادس -->
     <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
-        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">المحور الحادي عشر: الفكر السياسي المعاصر</h2>
-        <p><strong>الهدف العام للمحور:</strong> أن يحلل الطالب تعقيدات العالم السياسي المعاصر، ويقارن بين نظريات العدالة والحرية في الفكر الغربي، ويستوعب الاتجاهات الكبرى للفكر العربي (الإصلاحية، القومية، النقدية، والإسلام السياسي).</p>
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور السادس: الفكر السياسي المسيحي</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> أن يستوعب الطالب ثنائية السلطة في الفكر القروسطي، ويميز بين المنهج الأكويني التوفيقي والمنهج الأوغسطيني الذي يركز على "مدينة الرب" وعجز العقل البشري أمام الخطيئة.</p>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>رقم الوحدة</th>
-                <th>المحور الفرعي (حسب الفهرس الأصلي)</th>
-                <th>الأهداف البيداغوجية الإجرائية</th>
-                <th>طريقة العرض والوسيط الرقمي</th>
-                <th>الأنشطة والتقييم التكويني</th>
-                <th>المدة</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- أولاً: الفكر السياسي الغربي المعاصر -->
-            <tr>
-                <td>11.1</td>
-                <td>أولاً: الفكر السياسي الغربي المعاصر (أعلام وقضايا)</td>
-                <td>أن يحدد الطالب ركائز الفكر المعاصر (شميت، أرندت، راولز) ويفهم مفاهيم التعددية والعدالة كإنصاف.</td>
-                <td><strong>فيديو تعليمي:</strong> عرض مقارن بين مفهوم "السياسي" عند شميت والحرية عند حنا أرندت والعدالة عند راولز.</td>
-                <td><strong>منتدى نقاش:</strong> ناقش مفهوم "العدالة كإنصاف" عند جون راولز وكيفية تطبيقه في المجتمعات التعددية.</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- ثانياً: الفكر السياسي العربي المعاصر (الإصلاح والقومية) -->
-            <tr>
-                <td>11.2</td>
-                <td>ثانياً: الفكر السياسي العربي المعاصر (الإصلاح والتحديث)</td>
-                <td>أن يتتبع الطالب جذور النهضة العربية من رفاعة الطهطاوي إلى محمد عبده ومحاولات التوفيق بين الحداثة والإسلام.</td>
-                <td><strong>إنفوجرافيك:</strong> يمثل التيارات الأربعة الكبرى للفكر العربي (الإصلاحي، القومي، النقدي، واإسلام السياسي).</td>
-                <td><strong>كويز Quiz:</strong> أسئلة حول رؤية الطهطاوي للمؤسسات الفرنسية ودور محمد عبده في الإصلاح الديني.</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-            <!-- ثالثاً: الفكر العربي المعاصر (النقد والبدائل) -->
-            <tr>
-                <td>11.3</td>
-                <td>ثانياً (تابع): الفكر العربي النقدي والإسلام السياسي</td>
-                <td>أن يحلل الطالب الفكر النقدي (العروي، الجابري) وأطروحات الإسلام السياسي (المودودي، قطب) كاستجابة لإخفاقات التحديث.</td>
-                <td><strong>نص تفاعلي:</strong> مقارنة بين المنهج التاريخاني لعبد الله العروي وأطروحة "الإسلام هو الحل" في مواجهة الحداثة.</td>
-                <td><strong>سؤال عصف ذهني:</strong> لماذا برز التيار النقدي العربي بقوة بعد هزيمة 1967 وفشل تجارب الوحدة؟</td>
-                <td class="duration">60 دقيقة</td>
-            </tr>
-            <!-- الخاتمة والآفاق -->
-            <tr>
-                <td>11.4</td>
-                <td>خاتمة: آفاق الفكر السياسي في القرن الحادي والعشرين</td>
-                <td>أن يستشرف الطالب القضايا المستجدة (الهوية، الجندر، البيئة، الهجرة) ودور المفكر في "الهوامش".</td>
-                <td><strong>بودكاست ختامي:</strong> يتناول أهمية الانفتاح على المفكرين المعاصرين الجدد وربط التراث بالأسئلة الراهنة.</td>
-                <td><strong>واجب منزلي:</strong> اكتب ملخصاً ختامياً حول أهمية دراسة تاريخ الفكر السياسي في فهم تعقيدات الواقع الراهن.</td>
-                <td class="duration">45 دقيقة</td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- نهاية المحور الحادي عشر والوثيقة بالكامل -->
- <!-- خاتمة المقياس: آفاق الفكر السياسي المعاصر -->
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6.1</td>
+                    <td>أولاً: مدخل تمهيدي للفكر السياسي المسيحي</td>
+                    <td>أن يحدد الطالب سمات الفكر المسيحي (الفصل بين السلطة الزمنية والروحية) ومبدأ طاعة الأنظمة القائمة.</td>
+                    <td><strong>إنفوجرافيك:</strong> يوضح شعار "ما لقيصر لقيصر وما لله لله" وتوزيع الولاء بين الكنيسة والإمبراطور.</td>
+                    <td><strong>منتدى نقاش:</strong> كيف ساهمت المسيحية في خلق "ازدواجية السلطة" مقارنة بوحدتها في دولة المدينة اليونانية؟</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>6.2</td>
+                    <td>ثانياً: القديس توما الأكويني وإعادة بناء مفهوم العدالة</td>
+                    <td>أن يحلل الطالب محاولة الأكويني للتوفيق بين الأرسطية والثيولوجيا، ويصنف رتب القانون الأربع.</td>
+                    <td><strong>فيديو تعليمي:</strong> يشرح كتاب "الخلاصة اللاهوتية" وكيف أعاد الأكويني بعث فكرة "الإنسان حيوان سياسي".</td>
+                    <td><strong>كويز Quiz:</strong> أسئلة حول رتب القانون (الأزلي، الطبيعي، الإلهي، الإنساني) والعلاقة بين العقل والإيمان.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>6.3</td>
+                    <td>الهندسة الاجتماعية للمجتمع القروسطي عند الأكويني</td>
+                    <td>أن يميز الطالب بين طبقات المجتمع الإقطاعي (الملك، البارونات، الأقنان) ودور العقل في الصالح العام.</td>
+                    <td><strong>مخطط هرمي تفاعلي:</strong> يعرض تركيبة المجتمع المسيحي القروسطي القائم على الريع والخدمة العسكرية.</td>
+                    <td><strong>عصف ذهني:</strong> لماذا اعتبر الأكويني أن الدولة مؤسسة طبيعية تهدف لتحقيق الصالح العام عبر العقل؟</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>6.4</td>
+                    <td>ثالثاً: مدخل إلى القديس سان أوغستين</td>
+                    <td>أن يحلل الطالب نظرية "الجمهوريتين" (مدينة الرب ومدينة الأرض) ويربطها بمفهوم الخطيئة الأولى.</td>
+                    <td><strong>بودكاست صوتي:</strong> يتناول كتاب "مدينة الرب" والرد على اتهامات الوثنيين للمسيحية بعد سقوط روما.</td>
+                    <td><strong>واجب منزلي:</strong> لخص في فقرة مقولة أوغستين "آمن كي تعقل" وعلاقة ذلك بمحدودية العقل الإنساني.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- جدول السيناريو - المحور السابع -->
+    <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور السابع: التأصيل الإسلامي للسياسة</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> أن يحلل الطالب أسس الدولة في الإسلام انطلاقاً من "وثيقة المدينة"، ويفهم جذور الصراع السياسي حول الخلافة، ويستوعب نظرية "العمران والعصبية" عند ابن خلدون كأول تفسير سوسيولوجي للدولة.</p>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7.1</td>
+                    <td>أولاً: المدينة النموذجية في عهد دولة محمد صلى الله عليه وسلم</td>
+                    <td>أن يحلل الطالب "وثيقة الصحيفة" كدستور مدني أسس لـ "الأمة" ككيان سياسي يتجاوز الروابط القبلية.</td>
+                    <td><strong>نص تفاعلي + إنفوجرافيك:</strong> عرض بنود "الصحيفة" التي نظمت العلاقة بين المسلمين واليهود وسائر سكان المدينة.</td>
+                    <td><strong>منتدى نقاش:</strong> كيف ساهمت الصحيفة في الانتقال من "الفرد القبلي" إلى "المواطن" في جماعة سياسية واحدة؟</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>7.2</td>
+                    <td>ثانياً: الفرق الإسلامية وسؤال الخلافة</td>
+                    <td>أن يميز الطالب بين مواقف (السنة، الشيعة، الخوارج) حول شرعية الخليفة وطرق اختياره (البيعة مقابل النص).</td>
+                    <td><strong>مخطط مقارنة (Table):</strong> يبرز الفوارق المنهجية بين "الخلافة" كمنصب دنيوي-ديني و"الإمامة" كوراثة دينية.</td>
+                    <td><strong>كويز Quiz:</strong> أسئلة حول مفهوم "البيعة" وشروط الخليفة عند مختلف المذاهب الإسلامية.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>7.3</td>
+                    <td>ثالثاً: الفكر السياسي الخلدوني (العمران والوازع)</td>
+                    <td>أن يشرح الطالب ضرورة "الوازع السياسي" (الدولة) لمنع العدوان الطبيعي المجبول عليه البشر.</td>
+                    <td><strong>فيديو تعليمي:</strong> يشرح تأثر ابن خلدون بأرسطو في فكرة "الإنسان مدني بالطبع" وحاجة البشر للتعاون.</td>
+                    <td><strong>سؤال عصف ذهني:</strong> لماذا يعتبر ابن خلدون "الوازع" (السلطة) ضرورة مادية لبقاء النوع البشري？</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>7.4</td>
+                    <td>نظرية العصبية ودورة حياة الدولة</td>
+                    <td>أن يطبق الطالب مفهوم "العصبية" على مراحل نشأة الدول، ويفهم قانون الأجيال الثلاثة (البداوة، الملك، الترف).</td>
+                    <td><strong>مخطط بياني تفاعلي:</strong> يمثل منحنى "صعود وهبوط" الدول عند ابن خلدون وارتباطها بالترف وفناء العصبية.</td>
+                    <td><strong>واجب منزلي:</strong> لخص في فقرة كيف تتحول العصبية من "رئاسة" في البدو إلى "ملك وقهر" في الحضر.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- جدول السيناريو - المحور الثامن -->
+    <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور الثامن: الإصلاحات الدينية في أوروبا</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> أن يحلل الطالب أثر الحركة البروتستانتية في تحرير الدولة من هيمنة الكنيسة الكاثوليكية، ويفهم العلاقة بين الإيمان الفردي والسلطة الزمنية عند لوثر وكالفن.</p>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>8.1</td>
+                    <td>أولاً: مارتن لوثر وعقيدة التبرير بالإيمان</td>
+                    <td>أن يشرح الطالب مبدأ "المسؤولية الفردية عن الإيمان" وكيف ألغى لوثر الوساطة الكنسية بين العبد والرب.</td>
+                    <td><strong>فيديو تعليمي:</strong> يتناول سيرة لوثر وتعليقه للاحتجاجات الـ 95 على باب الكنيسة في "وتنبرج".</td>
+                    <td><strong>كويز Quiz:</strong> أسئلة حول مفهوم "الحرية الروحانية" عند لوثر ورفضه لصكوك الغفران.</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>8.2</td>
+                    <td>اللاهوت السياسي عند لوثر (الحكومتان)</td>
+                    <td>أن يميز الطالب بين "الحكومة الروحية" و"الحكومة الدنيوية"، ويفهم مبررات طاعة السلطة المدنية.</td>
+                    <td><strong>إنفوجرافيك:</strong> يوضح تقسيم لوثر للسلطة (الإنجيل للكنيسة، والسيف والقانون المدني للدولة).</td>
+                    <td><strong>منتدى نقاش:</strong> لماذا دعم لوثر الأنظمة الملكية في مواجهة سلطة البابا？</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>8.3</td>
+                    <td>ثانياً: جان كالفن ومبدأ الفصل بين الكنيسة والدولة</td>
+                    <td>أن يحلل الطالب رؤية كالفن التي تفصل بين المؤسستين (الكنيسة والدولة) مع إبقائهما خاضعتين لسيادة الله.</td>
+                    <td><strong>نص تفاعلي:</strong> يشرح الفرق بين "الدين" و"الكنيسة" في فكر كالفن وكيف تخدم الدولة مهمة التبشير.</td>
+                    <td><strong>سؤال عصف ذهني:</strong> كيف تؤدي الدولة وظيفة "روحية" عند كالفن عبر الحفاظ على الهدوء المحلي؟</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>8.4</td>
+                    <td>الثيوقراطية والمسؤولية المدنية عند كالفن</td>
+                    <td>أن يستوعب الطالب مفهوم "المواطن النموذجي" الذي تنتجه الكنيسة ليكون ركيزة للدولة المستقرة.</td>
+                    <td><strong>بودكاست صوتي:</strong> يتناول تجربة كالفن في "جنيف" وكيف تحول المجتمع إلى قوة أخلاقية موحدة.</td>
+                    <td><strong>واجب منزلي:</strong> لخص في فقرة كيف مهدت الإصلاحات الدينية الطريق لنشوء الدولة القومية المستقلة.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- جدول السيناريو - المحور التاسع -->
+    <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور التاسع: الفكر السياسي في عصر النهضة</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> أن يحلل الطالب الانتقال من المرجعية الدينية إلى الواقعية السياسية (الميكيافيلية)، ويستوعب الأسس القانونية للدولة الحديثة عبر نظرية "السيادة" عند جان بودان.</p>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس الأصلي)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>9.1</td>
+                    <td>أولاً: الفكر السياسي عند نيقولا ميكيافيلي (عصر النهضة)</td>
+                    <td>أن يربط الطالب بين روح الإنسانية في عصر النهضة والتحول نحو الثقة بالذات والإبداع الإنساني بعيداً عن زهد العصور الوسطى.</td>
+                    <td><strong>فيديو شارح قصير:</strong> يعرض حال إيطاليا المجزأة في القرن الخامس عشر وحلم ميكيافيلي بتوحيدها.</td>
+                    <td><strong>عصف ذهني:</strong> لماذا يعتبر ميكيافيلي "النهضة كلها مختزلة في شخصه"؟</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>9.2</td>
+                    <td>ميكيافيلي: فن الوصول إلى السلطة والحفاظ عليها</td>
+                    <td>أن يميز الطالب بين أطروحة "الأمير" (الحكم الاستبدادي للضرورة) و"الخطابات" (تفضيل الحكم الجمهوري والفضيلة المدنية).</td>
+                    <td><strong>نص تفاعلي:</strong> مقارنة بين رؤية ميكيافيلي المتشائمة للطبيعة البشرية (الأنانية) وضرورة أن يكون الحاكم "مخوفاً لا محبوباً".</td>
+                    <td><strong>منتدى نقاش:</strong> ناقش مفهوم "الغاية تبرر الوسيلة" من منظور ميكيافيلي الأخلاقي والسياسي.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>9.3</td>
+                    <td>ثانياً: جان بودان ونظرية السيادة (التسامح الديني)</td>
+                    <td>أن يحلل الطالب موقف بودان من التسامح الديني كضرورة سياسية (وليس مبدأ أخلاقياً) لإنهاء الانقسام القومي في فرنسا.</td>
+                    <td><strong>بودكاست تعليمي:</strong> يتناول كتاب "الكتب الست للجمهورية" وسياق مذبحة سان بارتلوميو.</td>
+                    <td><strong>كويز Quiz:</strong> أسئلة حول دور "السياسيين" في إعلاء مصلحة الدولة فوق النزاعات الطائفية.</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>9.4</td>
+                    <td>مفهوم الدولة السيادية وخصائصها عند بودان</td>
+                    <td>أن يحدد الطالب خصائص السيادة (غير قابلة للتجزئة، دائمة، ومطلقة) ويميز بينها وبين السلطات المؤقتة.</td>
+                    <td><strong>إنفوجرافيك:</strong> يوضح هرمية السلطة وحدود السيادة المطلقة (القانون الإلهي، الطبيعي، والملكية الخاصة).</td>
+                    <td><strong>واجب منزلي:</strong> لخص في فقرة كيف مهد بودان لمفهوم "الدولة الأمة" في الفكر السياسي الحديث.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- جدول السيناريو - المحور العاشر -->
+    <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور العاشر: الفكر السياسي الحديث</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> أن يحلل الطالب أسس الحداثة السياسية القائمة على العقل والحرية، ويقارن بين نماذج العقد الاجتماعي، ويستوعب نقد المجتمع الرأسمالي من منظور ماركسي.</p>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس الأصلي)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>10.1</td>
+                    <td>أولاً: الدولة والمجتمع المدني عند هيجل</td>
+                    <td>أن يميز الطالب بين "المجتمع المدني" كساحة للمصالح الخاصة، و"الدولة" كتحقق فعلي للحرية والأخلاق الشاملة.</td>
+                    <td><strong>فيديو تعليمي:</strong> يشرح جدلية الروح عند هيجل وكيف تعلو الدولة أخلاقياً على المجتمع المدني.</td>
+                    <td><strong>عصف ذهني:</strong> لماذا اعتبر هيجل أن الحرية الحقيقية لا توجد إلا داخل الإطار القانوني للدولة؟</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>10.2</td>
+                    <td>ثانياً: فلاسفة العقد الاجتماعي (هوبز، لوك، روسو)</td>
+                    <td>أن يقارن الطالب بين دوافع التعاقد (الخوف عند هوبز، حماية الملكية عند لوك، والحرية عند روسو).</td>
+                    <td><strong>مخطط مقارنة تفاعلي:</strong> يوضح الفرق بين "حالة الطبيعة" وشكل السلطة الناتج عن العقد في كل نموذج.</td>
+                    <td><strong>منتدى نقاش:</strong> أيهما أقرب للواقع السياسي المعاصر: نموذج لوك الليبرالي أم نموذج روسو في الإرادة العامة؟</td>
+                    <td class="duration">90 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>10.3</td>
+                    <td>ثالثاً: كارل ماركس والفكر السياسي</td>
+                    <td>أن يحلل الطالب البنية التحتية (الاقتصاد) وأثرها في صياغة البنية الفوقية (الدولة والقانون)، ويفهم مفهوم الصراع الطبقي.</td>
+                    <td><strong>إنفوجرافيك:</strong> يمثل العلاقة بين وسائل الإنتاج وعلاقات الإنتاج وكيف تولد "فائض القيمة".</td>
+                    <td><strong>كويز Quiz:</strong> أسئلة حول مفهوم "الوعي الزائف" ودور الدولة كأداة في يد الطبقة المسيطرة اقتصادياً.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- جدول السيناريو - المحور الحادي عشر -->
+    <div class="card" style="margin-top: 40px; margin-bottom: 30px;">
+        <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 0;">المحور الحادي عشر: الفكر السياسي المعاصر</h2>
+        <p style="margin-bottom: 0;"><strong>الهدف العام للمحور:</strong> أن يحلل الطالب تعقيدات العالم السياسي المعاصر، ويقارن بين نظريات العدالة والحرية في الفكر الغربي، ويستوعب الاتجاهات الكبرى للفكر العربي (الإصلاحية، القومية، النقدية، والإسلام السياسي).</p>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الوحدة</th>
+                    <th>المحور الفرعي (حسب الفهرس الأصلي)</th>
+                    <th>الأهداف البيداغوجية الإجرائية</th>
+                    <th>طريقة العرض والوسيط الرقمي</th>
+                    <th>الأنشطة والتقييم التكويني</th>
+                    <th>المدة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>11.1</td>
+                    <td>أولاً: الفكر السياسي الغربي المعاصر (أعلام وقضايا)</td>
+                    <td>أن يحدد الطالب ركائز الفكر المعاصر (شميت، أرندت، راولز) ويفهم مفاهيم التعددية والعدالة كإنصاف.</td>
+                    <td><strong>فيديو تعليمي:</strong> عرض مقارن بين مفهوم "السياسي" عند شميت والحرية عند حنا أرندت والعدالة عند راولز.</td>
+                    <td><strong>منتدى نقاش:</strong> ناقش مفهوم "العدالة كإنصاف" عند جون راولز وكيفية تطبيقه في المجتمعات التعددية.</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>11.2</td>
+                    <td>ثانياً: الفكر السياسي العربي المعاصر (الإصلاح والتحديث)</td>
+                    <td>أن يتتبع الطالب جذور النهضة العربية من رفاعة الطهطاوي إلى محمد عبده ومحاولات التوفيق بين الحداثة والإسلام.</td>
+                    <td><strong>إنفوجرافيك:</strong> يمثل التيارات الأربعة الكبرى للفكر العربي (الإصلاحي، القومي، النقدي، والإسلام السياسي).</td>
+                    <td><strong>كويز Quiz:</strong> أسئلة حول رؤية الطهطاوي للمؤسسات الفرنسية ودور محمد عبده في الإصلاح الديني.</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>11.3</td>
+                    <td>ثانياً (تابع): الفكر العربي النقدي والإسلام السياسي</td>
+                    <td>أن يحلل الطالب الفكر النقدي (العروي، الجابري) وأطروحات الإسلام السياسي (المودودي، قطب) كاستجابة لإخفاقات التحديث.</td>
+                    <td><strong>نص تفاعلي:</strong> مقارنة بين المنهج التاريخاني لعبد الله العروي وأطروحة "الإسلام هو الحل" في مواجهة الحداثة.</td>
+                    <td><strong>سؤال عصف ذهني:</strong> لماذا برز التيار النقدي العربي بقوة بعد هزيمة 1967 وفشل تجارب الوحدة؟</td>
+                    <td class="duration">60 دقيقة</td>
+                </tr>
+                <tr>
+                    <td>11.4</td>
+                    <td>خاتمة: آفاق الفكر السياسي في القرن الحادي والعشرين</td>
+                    <td>أن يستشرف الطالب القضايا المستجدة (الهوية، الجندر، البيئة، الهجرة) ودور المفكر في "الهوامش".</td>
+                    <td><strong>بودكاست ختامي:</strong> يتناول أهمية الانفتاح على المفكرين المعاصرين الجدد وربط التراث بالأسئلة الراهنة.</td>
+                    <td><strong>واجب منزلي:</strong> اكتب ملخصاً ختامياً حول أهمية دراسة تاريخ الفكر السياسي في فهم تعقيدات الواقع الراهن.</td>
+                    <td class="duration">45 دقيقة</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- خاتمة المقياس -->
     <div class="card" style="margin-top: 40px; background-color: #f8f9fa; border: 1px solid var(--primary-color); padding: 25px; border-radius: 12px;">
         <h3 style="margin-bottom: 15px;">خاتمة المقياس: آفاق الفكر السياسي في القرن الحادي والعشرين</h3>
         <p style="font-size: 0.95em; text-align: justify; margin-bottom: 15px;">
-            إن دراسة تاريخ الفكر السياسي لم تعد تقتصر على تتبع تطور النظريات الكلاسيكية، بل أصبحت مطالبة بالانفتاح على القضايا الجديدة التي فرضتها التحولات المعاصرة. يهدف هذا المقياس إلى توجيه البحث نحو الهوامش لاستكشاف تجارب الفئات المستبعدة وفهم الإشكالات الوجودية والسياسية التي تشغل الإنسان المعاصر.
+            إن دراسة تاريخ الفكر السياسي لم تعد تقتصر على تتبع تطور النظريات الكلاسيكية، بل أصبحت خارجية بالانفتاح على القضايا الجديدة التي فرضتها التحولات المعاصرة. يهدف هذا المقياس إلى توجيه البحث نحو الهوامش لاستكشاف تجارب الفئات المستبعدة وفهم الإشكالات الوجودية والسياسية التي تشغل الإنسان المعاصر.
         </p>
-        <p style="font-size: 0.95em; text-align: justify;">
+        <p style="font-size: 0.95em; text-align: justify; margin-bottom: 0;">
             تشمل هذه الآفاق مواضيع الهوية، وقضايا الجندر، والهجرة، والعدالة البيئية، والكرامة الإنسانية. كما يستوجب التكوين الرصين الانفتاح على إسهامات مفكرين معاصرين أمثال <strong>وائل حلاق</strong> في فلسفة القانون والدولة، و<strong>علي المزروعي</strong> في تحليل العلاقات بين الشمال والجنوب، و<strong>فريد بوشيه</strong> في أخلاقيات الهشاشة، مما يسمح بربط التراث الفكري بالأسئلة السياسية الراهنة.
         </p>
     </div>
 
-    <!-- قائمة المصادر والمراجع المختارة -->
+    <!-- قائمة المصادر والمراجع -->
     <div class="card" style="margin-top: 30px; padding: 25px; border-radius: 12px;">
         <h3 style="margin-bottom: 20px;">قائمة المصادر والمراجع المختارة</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; font-size: 0.9em;">
-            <ul style="list-style-type: disc; padding-right: 20px; line-height: 1.8;">
+        <style>
+            .references-grid {
+                display: grid; 
+                grid-template-columns: 1fr 1fr; 
+                gap: 30px; 
+                font-size: 0.9em;
+            }
+            @media (max-width: 640px) {
+                .references-grid {
+                    grid-template-columns: 1fr;
+                    gap: 15px;
+                }
+            }
+        </style>
+        <div class="references-grid">
+            <ul style="list-style-type: disc; padding-right: 20px; line-height: 1.8; margin: 0;">
                 <li><strong>بن جيلالي، محمد أمين:</strong> مطبوعة بيداغوجية في مقياس تاريخ الفكر السياسي، جامعة تلمسان.</li>
                 <li><strong>سباين، جورج:</strong> تطور الفكر السياسي، الهيئة المصرية العامة للكتاب.</li>
                 <li><strong>أفلاطون:</strong> محاورة الدفاع والجمهورية (ترجمة عزت القرني).</li>
                 <li><strong>المحمداوي، علي عبود:</strong> الفلسفة السياسية: كشف لما هو كائن.</li>
             </ul>
-            <ul style="list-style-type: disc; padding-right: 20px; line-height: 1.8;">
+            <ul style="list-style-type: disc; padding-right: 20px; line-height: 1.8; margin: 0;">
                 <li><strong>شتراوس، ليو:</strong> تاريخ الفلسفة السياسية (ترجمة محمود سيد أحمد).</li>
                 <li><strong>ابن خلدون:</strong> المقدمة.</li>
-                <li><strong>حالق، وائل ب.:</strong> الدولة المستحيلة: الإسلام والسياسة ومأزق الحداثة الأخلاقي.</li>
+                <li><strong>حلاق، وائل ب.:</strong> الدولة المستحيلة: الإسلام والسياسة ومأزق الحداثة الأخلاقي.</li>
                 <li><strong>Wolin, Sheldon S.:</strong> Politics and Vision.</li>
             </ul>
         </div>
     </div>
 
-    <!-- تذييل نهائي للسيناريو -->
+    <!-- التذييل النهائي -->
     <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--primary-color); font-size: 0.85em; color: #555;">
         <strong>أ.د محمد أمين بن جيلالي</strong><br>
         قسم العلوم السياسية - كلية الحقوق والعلوم السياسية - جامعة تلمسان
- <!-- قسم حقوق الطبع والنشر والتأليف -->
-    <div style="margin-top: 60px; border-top: 2px solid var(--primary-color); padding-top: 20px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px dashed var(--secondary-color); display: inline-block; width: 80%;">
-            <p style="margin: 0; font-size: 1em; color: var(--primary-color); font-weight: bold;">
-                &copy; 2025 - 2026 جميع الحقوق محفوظة
-            </p>
-            <p style="margin: 5px 0; font-size: 0.9em; color: #333;">
-                هذا المحتوى الرقمي مستخلص من المطبوعة البيداغوجية المعتمدة للأستاذ: 
-                <strong>الدكتور محمد أمين بن جيلالي</strong>
-            </p>
-            <p style="margin: 5px 0; font-size: 0.85em; color: #555;">
-                قسم العلوم السياسية | كلية الحقوق والعلوم السياسية | جامعة أبي بكر بلقايد – تلمسان
-            </p>
-            <div style="margin-top: 10px;">
-                <img src="university-logo.png" alt="شعار جامعة تلمسان" style="width: 50px; opacity: 0.7;">
+        
+        <!-- قسم حقوق الطبع والنشر -->
+        <div style="margin-top: 60px; border-top: 2px solid var(--primary-color); padding-top: 20px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px dashed var(--secondary-color); display: inline-block; width: 100%; max-width: 80%; box-sizing: border-box;">
+                <p style="margin: 0; font-size: 1em; color: var(--primary-color); font-weight: bold;">
+                    &copy; 2025 - 2026 جميع الحقوق محفوظة
+                </p>
+                <p style="margin: 5px 0; font-size: 0.9em; color: #333;">
+                    هذا المحتوى الرقمي مستخلص من المطبوعة البيداغوجية المعتمدة للأستاذ: 
+                    <strong>الدكتور محمد أمين بن جيلالي</strong>
+                </p>
+                <p style="margin: 5px 0; font-size: 0.85em; color: #555;">
+                    قسم العلوم السياسية | كلية الحقوق والعلوم السياسية | جامعة أبي بكر بلقايد – تلمسان
+                </p>
+                <div style="margin-top: 10px;">
+                    <img src="university-logo.png" alt="شعار جامعة تلمسان" style="width: 50px; opacity: 0.7;">
+                </div>
             </div>
+            <p style="margin-top: 15px; font-size: 0.75em; color: #888;">
+                يُمنع إعادة نشر أو نسخ هذا السيناريو البيداغوجي لأغراض تجارية دون إذن مسبق من صاحب الحقوق الفكرية.
+            </p>
         </div>
-        <p style="margin-top: 15px; font-size: 0.75em; color: #888;">
-            يُمنع إعادة نشر أو نسخ هذا السيناريو البيداغوجي لأغراض تجارية دون إذن مسبق من صاحب الحقوق الفكرية.
-        </p>
     </div>
-    <!-- نهاية قسم الحقوق -->
-    </div>
+</div>
 </body>
 </html>
